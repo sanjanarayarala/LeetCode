@@ -1,0 +1,29 @@
+class Solution(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        k=0
+        for i in nums:
+            nums[k]=i**2
+            k+=1
+        
+        front=0
+        back=len(nums)-1
+
+        n=[]
+
+        for i in range(len(nums)):
+            if nums[back]>nums[front]:
+                n.append(nums[back])
+                back-=1
+            else:
+                n.append(nums[front])
+                front+=1
+        k=0
+        for i in range(len(n)-1,-1, -1):
+            nums[k]=n[i]
+            k+=1
+
+        return nums
